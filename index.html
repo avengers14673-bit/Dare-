@@ -26,12 +26,11 @@ body {
 body {
     font-family: "Poppins", sans-serif;
     color: white;
+
     background:
         radial-gradient(circle at 50% 30%, #35115d 0%, transparent 35%),
         linear-gradient(180deg, #1d0b35 0%, #0b0615 100%);
 }
-
-/* STAR BACKGROUND */
 
 body::before {
     content: "";
@@ -46,16 +45,12 @@ body::before {
     opacity: .35;
 }
 
-/* MAIN */
-
 .app {
     width: 100%;
     height: 100dvh;
     position: relative;
     overflow: hidden;
 }
-
-/* SCREEN */
 
 .screen {
     position: absolute;
@@ -72,6 +67,7 @@ body::before {
 
     opacity: 0;
     visibility: hidden;
+
     transform: translateX(35px) scale(.98);
 
     transition:
@@ -83,8 +79,10 @@ body::before {
 .screen.active {
     opacity: 1;
     visibility: visible;
+
     transform: translateX(0) scale(1);
 }
+
 
 /* EMOJI */
 
@@ -101,6 +99,7 @@ body::before {
 }
 
 @keyframes float {
+
     0%,100% {
         transform: translateY(0);
     }
@@ -109,6 +108,7 @@ body::before {
         transform: translateY(-8px);
     }
 }
+
 
 /* SMALL TEXT */
 
@@ -123,10 +123,12 @@ body::before {
     max-width: 360px;
 }
 
-/* HEADING */
+
+/* HEADINGS */
 
 h1 {
     font-size: clamp(38px, 10vw, 62px);
+
     line-height: 1.08;
 
     font-weight: 700;
@@ -138,6 +140,7 @@ h1 {
 
 h2 {
     font-size: clamp(34px, 9vw, 52px);
+
     line-height: 1.12;
 
     font-weight: 600;
@@ -145,18 +148,21 @@ h2 {
     margin-bottom: 38px;
 }
 
-/* NORMAL PARAGRAPH */
+
+/* MESSAGE */
 
 .message {
     max-width: 380px;
 
     font-size: 20px;
+
     line-height: 1.6;
 
     color: rgba(255,255,255,.86);
 
     margin-bottom: 42px;
 }
+
 
 /* BUTTON */
 
@@ -173,6 +179,7 @@ h2 {
     font-family: "Poppins", sans-serif;
 
     font-size: 17px;
+
     font-weight: 600;
 
     color: white;
@@ -203,7 +210,8 @@ h2 {
         0 15px 40px rgba(210,50,190,.4);
 }
 
-/* DARE QUOTE */
+
+/* DARE TEXT */
 
 .quote {
     max-width: 370px;
@@ -211,6 +219,7 @@ h2 {
     padding: 0 10px;
 
     font-size: 19px;
+
     line-height: 1.65;
 
     color: rgba(255,255,255,.9);
@@ -222,7 +231,8 @@ h2 {
     color: white;
 }
 
-/* FINAL */
+
+/* FINAL SCREEN */
 
 .final-heart {
     font-size: 75px;
@@ -237,6 +247,7 @@ h2 {
 }
 
 @keyframes heartbeat {
+
     0%,100% {
         transform: scale(1);
     }
@@ -248,10 +259,28 @@ h2 {
 
 .final-name {
     font-size: 22px;
+
     color: rgba(255,255,255,.75);
 
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
+
+
+/* I LOVE YOU */
+
+.love-text {
+    font-size: 25px;
+
+    font-weight: 600;
+
+    color: #ff79c8;
+
+    margin-bottom: 18px;
+
+    text-shadow:
+        0 0 15px rgba(255,80,180,.35);
+}
+
 
 .final-title {
     font-size: clamp(38px, 10vw, 58px);
@@ -263,8 +292,10 @@ h2 {
 
 .final-message {
     font-size: 18px;
+
     color: rgba(255,255,255,.72);
 }
+
 
 /* MOBILE */
 
@@ -272,6 +303,7 @@ h2 {
 
     .emoji {
         font-size: 65px;
+
         margin-bottom: 28px;
     }
 
@@ -303,20 +335,31 @@ h2 {
 
     .btn {
         min-width: 210px;
+
         font-size: 15px;
     }
+
+    .love-text {
+        font-size: 22px;
+    }
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
+
     <!-- SCREEN 1 -->
+
     <section class="screen active" id="screen1">
 
-        <div class="emoji">🙂</div>
+        <div class="emoji">
+            🙂
+        </div>
 
         <div class="small-text">
             I got a little dare...
@@ -334,19 +377,25 @@ h2 {
     </section>
 
 
+
     <!-- SCREEN 2 -->
+
     <section class="screen" id="screen2">
 
-        <div class="emoji">😎</div>
+        <div class="emoji">
+            😎
+        </div>
 
         <h2>
             Here's the dare
         </h2>
 
         <div class="quote">
+
             “Mention your favourite person,<br>
             write <strong>I LOVE YOU</strong>,<br>
             and send the screenshot.”
+
         </div>
 
         <button class="btn" onclick="nextScreen(3)">
@@ -356,10 +405,14 @@ h2 {
     </section>
 
 
+
     <!-- SCREEN 3 -->
+
     <section class="screen" id="screen3">
 
-        <div class="emoji">🤫</div>
+        <div class="emoji">
+            🤫
+        </div>
 
         <div class="small-text">
             Okay...
@@ -377,10 +430,14 @@ h2 {
     </section>
 
 
+
     <!-- SCREEN 4 -->
+
     <section class="screen" id="screen4">
 
-        <div class="emoji">😏</div>
+        <div class="emoji">
+            😏
+        </div>
 
         <div class="small-text">
             I could mention her...
@@ -398,7 +455,9 @@ h2 {
     </section>
 
 
+
     <!-- FINAL SCREEN -->
+
     <section class="screen" id="screen5">
 
         <div class="final-heart">
@@ -409,33 +468,47 @@ h2 {
             @YOU
         </div>
 
+        <!-- NEW TEXT -->
+
+        <div class="love-text">
+            I LOVE YOU ❤️
+        </div>
+
         <div class="final-title">
             Yep. You.
         </div>
 
         <div class="final-message">
-            Dare completed. 😂📸
+            Dare completed. 
         </div>
 
     </section>
 
+
 </div>
+
 
 
 <script>
 
 function nextScreen(number) {
 
-    const screens = document.querySelectorAll(".screen");
+    const screens =
+        document.querySelectorAll(".screen");
 
     screens.forEach(screen => {
+
         screen.classList.remove("active");
+
     });
 
-    const next = document.getElementById("screen" + number);
+    const next =
+        document.getElementById("screen" + number);
 
     if (next) {
+
         next.classList.add("active");
+
     }
 }
 
