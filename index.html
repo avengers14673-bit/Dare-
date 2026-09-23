@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#170b2b">
-
-<title>Dare Accepted ❤️</title>
-
-<style>
+<meta name="theme-color" content="#170b2b"><title>Dare Accepted ❤️</title><style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 * {
@@ -232,18 +227,122 @@ h2 {
 }
 
 
-/* FINAL SCREEN */
+/* =========================
+   PREMIUM FINAL SCREEN
+========================= */
+
+.final-screen {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* GLOW */
+
+.final-screen::before {
+    content: "";
+
+    position: absolute;
+
+    width: 340px;
+    height: 340px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(255,55,170,.28),
+        rgba(130,50,255,.10),
+        transparent 70%
+    );
+
+    filter: blur(15px);
+
+    animation: finalGlow 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes finalGlow {
+
+    0%,100% {
+        transform: scale(.9);
+        opacity: .65;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+
+/* GLASS CARD */
+
+.final-card {
+    position: relative;
+    z-index: 2;
+
+    width: min(390px, 92vw);
+
+    padding: 42px 25px 38px;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.035)
+        );
+
+    border: 1px solid rgba(255,255,255,.14);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.42),
+        inset 0 1px 0 rgba(255,255,255,.10);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    animation: cardReveal .9s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes cardReveal {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px)
+            scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* HEART */
 
 .final-heart {
-    font-size: 75px;
+    position: relative;
 
-    margin-bottom: 35px;
+    font-size: 78px;
+
+    line-height: 1;
+
+    margin-bottom: 25px;
 
     animation:
         heartbeat 1.5s ease-in-out infinite;
 
     filter:
-        drop-shadow(0 0 18px rgba(255,60,120,.5));
+        drop-shadow(0 0 18px rgba(255,60,120,.65));
 }
 
 @keyframes heartbeat {
@@ -253,47 +352,139 @@ h2 {
     }
 
     50% {
-        transform: scale(1.12);
+        transform: scale(1.14);
     }
 }
 
-.final-name {
-    font-size: 22px;
 
-    color: rgba(255,255,255,.75);
+/* NAME */
+
+.final-name {
+    font-size: 18px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,.58);
 
     margin-bottom: 12px;
 }
 
 
-/* I LOVE YOU */
+/* LOVE TEXT */
 
 .love-text {
-    font-size: 25px;
+    font-size: clamp(25px, 7vw, 32px);
 
     font-weight: 600;
 
     color: #ff79c8;
 
-    margin-bottom: 18px;
+    margin-bottom: 14px;
 
     text-shadow:
-        0 0 15px rgba(255,80,180,.35);
+        0 0 12px rgba(255,80,180,.35),
+        0 0 30px rgba(255,80,180,.20);
+
+    animation: loveGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes loveGlow {
+
+    0%,100% {
+        text-shadow:
+            0 0 12px rgba(255,80,180,.35);
+    }
+
+    50% {
+        text-shadow:
+            0 0 20px rgba(255,80,180,.75),
+            0 0 40px rgba(255,80,180,.30);
+    }
 }
 
 
+/* TITLE */
+
 .final-title {
-    font-size: clamp(38px, 10vw, 58px);
+    font-size: clamp(40px, 11vw, 60px);
+
+    line-height: 1.05;
 
     font-weight: 700;
 
-    margin-bottom: 15px;
+    letter-spacing: -1.8px;
+
+    margin-bottom: 13px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #ffffff,
+            #ffd9f1,
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
 }
 
-.final-message {
-    font-size: 18px;
 
-    color: rgba(255,255,255,.72);
+/* MESSAGE */
+
+.final-message {
+    font-size: 16px;
+
+    color: rgba(255,255,255,.58);
+
+    letter-spacing: .5px;
+}
+
+
+/* FLOATING HEARTS */
+
+.heart-particle {
+    position: absolute;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation: riseHeart linear infinite;
+}
+
+@keyframes riseHeart {
+
+    0% {
+        transform:
+            translateY(30px)
+            scale(.6)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .7;
+    }
+
+    80% {
+        opacity: .35;
+    }
+
+    100% {
+        transform:
+            translateY(-105vh)
+            scale(1.1)
+            rotate(25deg);
+
+        opacity: 0;
+    }
 }
 
 
@@ -303,7 +494,6 @@ h2 {
 
     .emoji {
         font-size: 65px;
-
         margin-bottom: 28px;
     }
 
@@ -320,6 +510,20 @@ h2 {
         padding-top: 20px;
         padding-bottom: 20px;
     }
+
+    .final-card {
+        padding-top: 30px;
+        padding-bottom: 28px;
+    }
+
+    .final-heart {
+        font-size: 65px;
+        margin-bottom: 18px;
+    }
+
+    .final-title {
+        font-size: 42px;
+    }
 }
 
 @media (max-width: 360px) {
@@ -335,130 +539,136 @@ h2 {
 
     .btn {
         min-width: 210px;
-
         font-size: 15px;
     }
 
     .love-text {
         font-size: 22px;
     }
+
+    .final-card {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
 }
 
-</style>
-</head>
+</style></head><body><div class="app"><!-- SCREEN 1 -->
 
+<section class="screen active" id="screen1">
 
-<body>
+    <div class="emoji">
+        🙂
+    </div>
 
-<div class="app">
+    <div class="small-text">
+        I got a little dare...
+    </div>
 
+    <h1>
+        So I thought,<br>
+        why not?
+    </h1>
 
-    <!-- SCREEN 1 -->
+    <button class="btn" onclick="nextScreen(2)">
+        START →
+    </button>
 
-    <section class="screen active" id="screen1">
-
-        <div class="emoji">
-            🙂
-        </div>
-
-        <div class="small-text">
-            I got a little dare...
-        </div>
-
-        <h1>
-            So I thought,<br>
-            why not?
-        </h1>
-
-        <button class="btn" onclick="nextScreen(2)">
-            START →
-        </button>
-
-    </section>
+</section>
 
 
 
-    <!-- SCREEN 2 -->
+<!-- SCREEN 2 -->
 
-    <section class="screen" id="screen2">
+<section class="screen" id="screen2">
 
-        <div class="emoji">
-            😎
-        </div>
+    <div class="emoji">
+        😎
+    </div>
 
-        <h2>
-            Here's the dare
-        </h2>
+    <h2>
+        Here's the dare
+    </h2>
 
-        <div class="quote">
+    <div class="quote">
 
-            “Mention your favourite person,<br>
-            write <strong>I LOVE YOU</strong>,<br>
-            and send the screenshot.”
+        “Mention your favourite person,<br>
+        write <strong>I LOVE YOU</strong>,<br>
+        and send the screenshot.”
 
-        </div>
+    </div>
 
-        <button class="btn" onclick="nextScreen(3)">
-            OKAY... →
-        </button>
+    <button class="btn" onclick="nextScreen(3)">
+        OKAY... →
+    </button>
 
-    </section>
-
-
-
-    <!-- SCREEN 3 -->
-
-    <section class="screen" id="screen3">
-
-        <div class="emoji">
-            🤫
-        </div>
-
-        <div class="small-text">
-            Okay...
-        </div>
-
-        <h2>
-            I know who<br>
-            I could mention.
-        </h2>
-
-        <button class="btn" onclick="nextScreen(4)">
-            NEXT →
-        </button>
-
-    </section>
+</section>
 
 
 
-    <!-- SCREEN 4 -->
+<!-- SCREEN 3 -->
 
-    <section class="screen" id="screen4">
+<section class="screen" id="screen3">
 
-        <div class="emoji">
-            😏
-        </div>
+    <div class="emoji">
+        🤫
+    </div>
 
-        <div class="small-text">
-            I could mention her...
-        </div>
+    <div class="small-text">
+        Okay...
+    </div>
 
-        <h2>
-            But I'll keep<br>
-            that a little secret.
-        </h2>
+    <h2>
+        I know who<br>
+        I could mention.
+    </h2>
 
-        <button class="btn" onclick="nextScreen(5)">
-            WHO? 👀
-        </button>
+    <button class="btn" onclick="nextScreen(4)">
+        NEXT →
+    </button>
 
-    </section>
+</section>
 
 
 
-    <!-- FINAL SCREEN -->
+<!-- SCREEN 4 -->
 
-    <section class="screen" id="screen5">
+<section class="screen" id="screen4">
+
+    <div class="emoji">
+        😏
+    </div>
+
+    <div class="small-text">
+        I could mention her...
+    </div>
+
+    <h2>
+        But I'll keep<br>
+        that a little secret.
+    </h2>
+
+    <button class="btn" onclick="nextScreen(5)">
+        WHO? 👀
+    </button>
+
+</section>
+
+
+
+<!-- PREMIUM FINAL SCREEN -->
+
+<section class="screen final-screen" id="screen5">
+
+    <!-- Floating hearts -->
+
+    <span class="heart-particle" style="left:8%; bottom:-20px; animation-duration:8s; animation-delay:0s;">♡</span>
+    <span class="heart-particle" style="left:22%; bottom:-30px; animation-duration:10s; animation-delay:2s;">♥</span>
+    <span class="heart-particle" style="left:76%; bottom:-20px; animation-duration:9s; animation-delay:1s;">♡</span>
+    <span class="heart-particle" style="left:90%; bottom:-30px; animation-duration:11s; animation-delay:3s;">♥</span>
+    <span class="heart-particle" style="left:48%; bottom:-20px; animation-duration:12s; animation-delay:4s;">♡</span>
+
+
+    <div class="final-card">
 
         <div class="final-heart">
             ❤️
@@ -467,8 +677,6 @@ h2 {
         <div class="final-name">
             @YOU
         </div>
-
-        <!-- NEW TEXT -->
 
         <div class="love-text">
             I LOVE YOU ❤️
@@ -479,17 +687,14 @@ h2 {
         </div>
 
         <div class="final-message">
-            Dare completed. 
+            Dare completed.
         </div>
 
-    </section>
+    </div>
 
+</section>
 
-</div>
-
-
-
-<script>
+</div><script>
 
 function nextScreen(number) {
 
@@ -497,22 +702,16 @@ function nextScreen(number) {
         document.querySelectorAll(".screen");
 
     screens.forEach(screen => {
-
         screen.classList.remove("active");
-
     });
 
     const next =
         document.getElementById("screen" + number);
 
     if (next) {
-
         next.classList.add("active");
-
     }
 }
 
-</script>
-
-</body>
+</script></body>
 </html>
