@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dare Accepted ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, #35104f 0%, #140b24 42%, #07070d 100%);
+      color: white;
+      overflow: hidden;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px);
+      background-size: 45px 45px;
+      opacity: .18;
+      animation: moveStars 18s linear infinite;
+    }
+
+    @keyframes moveStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(45px); }
+    }
+
+    .app {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+    }
+
+    .screen {
+      width: 100%;
+      max-width: 430px;
+      min-height: 620px;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn .7s ease;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .emoji {
+      font-size: 58px;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 0 18px rgba(255,80,180,.5));
+    }
+
+    h1 {
+      font-size: clamp(38px, 11vw, 58px);
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 28px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #d8d0df;
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 340px;
+    }
+
+    .highlight {
+      color: #ff75c8;
+      font-weight: 700;
+    }
+
+    .quote {
+      margin-top: 22px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 15px 45px rgba(0,0,0,.3);
+    }
+
+    button {
+      margin-top: 35px;
+      border: none;
+      padding: 16px 27px;
+      border-radius: 999px;
+      color: white;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .8px;
+      background: linear-gradient(135deg, #ff3d9d, #8d4dff);
+      box-shadow:
+        0 10px 30px rgba(255,61,157,.28),
+        inset 0 1px 0 rgba(255,255,255,.35);
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    button:active {
+      transform: scale(.94);
+    }
+
+    .typing {
+      min-height: 105px;
+      font-size: 27px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 28px;
+      background: #ff75c8;
+      margin-left: 4px;
+      animation: blink .7s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .mystery {
+      font-size: 72px;
+      margin-bottom: 15px;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      50% { transform: translateY(-10px); }
+    }
+
+    .finalTag {
+      font-size: 62px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      background: linear-gradient(90deg, #fff, #ff75c8, #b875ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: reveal .9s cubic-bezier(.2,.8,.2,1);
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: scale(.5) rotate(-5deg);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 20px;
+      pointer-events: none;
+      animation: heartUp 2.5s linear forwards;
+      z-index: 5;
+    }
+
+    @keyframes heartUp {
+      from {
+        transform: translateY(0) scale(.7);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-180px) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    .small {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #aaa0b0;
+    }
+
+    @media (max-width: 380px) {
+      .screen {
+        min-height: 560px;
+      }
+
+      .finalTag {
+        font-size: 50px;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stars"></div>
+
+  <main class="app">
+
+    <!-- SCREEN 1 -->
+    <section class="screen active" id="screen1">
+      <div class="emoji">😎</div>
+
+      <h1>Challenge<br>Accepted.</h1>
+
+      <p>
+        Someone gave me a little dare...
+        and apparently, I decided to take it seriously.
+      </p>
+
+      <button onclick="nextScreen(2)">
+        OPEN THE DARE →
+      </button>
+    </section>
+
+
+    <!-- SCREEN 2 -->
+    <section class="screen" id="screen2">
+
+      <div class="emoji">👀</div>
+
+      <h2>The Dare</h2>
+
+      <div class="quote">
+        <p>
+          “Mention your favourite person,
+          write <span class="highlight">I LOVE YOU</span>,
+          and send the screenshot.”
+        </p>
+      </div>
+
+      <button onclick="nextScreen(3)">
+        OKAY... I GOT SOMEONE 👀
+      </button>
+    </section>
+
+
+    <!-- SCREEN 3 -->
+    <section class="screen" id="screen3">
+
+      <div class="mystery">🤫</div>
+
+      <div class="typing" id="typingText"></div>
+
+      <button id="continueBtn" style="display:none;" onclick="nextScreen(4)">
+        ONE LAST THING →
+      </button>
+
+    </section>
+
+
+    <!-- SCREEN 4 -->
+    <section class="screen" id="screen4">
+
+      <div class="emoji">😏</div>
+
+      <p style="margin-bottom:18px;">
+        I could mention her...
+      </p>
+
+      <h2>But why make it<br>that obvious?</h2>
+
+      <button onclick="showFinal()">
+        WHO? 👀
+      </button>
+
+    </section>
+
+
+    <!-- FINAL SCREEN -->
+    <section class="screen" id="screen5">
+
+      <div class="emoji">❤️</div>
+
+      <div class="finalTag">@YOU</div>
+
+      <p style="margin-top:25px;">
+        Yep. You.
+      </p>
+
+      <p class="small">
+        Dare completed.<br>
+        Screenshot le lo 😂📸
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    function nextScreen(number) {
+
+      document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+      });
+
+      document.getElementById("screen" + number).classList.add("active");
+
+      if (number === 3) {
+        startTyping();
+      }
+    }
+
+
+    function startTyping() {
+
+      const text =
+        "I could mention her…\nBut why make it that obvious? 😏";
+
+      const element = document.getElementById("typingText");
+      const button = document.getElementById("continueBtn");
+
+      element.innerHTML = "";
+      button.style.display = "none";
+
+      let i = 0;
+
+      function type() {
+
+        if (i < text.length) {
+
+          if (text[i] === "\n") {
+            element.innerHTML += "<br>";
+          } else {
+            element.innerHTML += text[i];
+          }
+
+          i++;
+
+          setTimeout(type, 48);
+
+        } else {
+
+          element.innerHTML +=
+            '<span class="cursor"></span>';
+
+          setTimeout(() => {
+            button.style.display = "inline-block";
+          }, 700);
+        }
+      }
+
+      type();
+    }
+
+
+    function showFinal() {
+
+      nextScreen(5);
+
+      createHearts();
+    }
+
+
+    function createHearts() {
+
+      for (let i = 0; i < 18; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML =
+          Math.random() > .5 ? "❤️" : "✨";
+
+        heart.style.left =
+          Math.random() * 100 + "vw";
+
+        heart.style.bottom =
+          Math.random() * 20 + "vh";
+
+        heart.style.animationDelay =
+          Math.random() * .8 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3000);
+      }
+    }
+
+  </script>
+
+</body>
+</html>
