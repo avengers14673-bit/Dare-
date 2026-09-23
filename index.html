@@ -34,3 +34,684 @@ body::before {
     pointer-events: none;
 
     background-image:
+        radial-gradient(circle, rgba(255,255,255,.18) 1px, transparent 1px);
+
+    background-size: 55px 55px;
+    opacity: .35;
+}
+
+.app {
+    width: 100%;
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+}
+
+.screen {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px 24px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateX(35px) scale(.98);
+
+    transition:
+        opacity .45s ease,
+        transform .45s ease,
+        visibility .45s;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateX(0) scale(1);
+}
+
+
+/* EMOJI */
+
+.emoji {
+    font-size: 78px;
+    line-height: 1;
+
+    margin-bottom: 45px;
+
+    filter:
+        drop-shadow(0 0 15px rgba(255,100,190,.35));
+
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* SMALL TEXT */
+
+.small-text {
+    font-size: 20px;
+    line-height: 1.5;
+
+    color: rgba(255,255,255,.82);
+
+    margin-bottom: 20px;
+
+    max-width: 360px;
+}
+
+
+/* HEADINGS */
+
+h1 {
+    font-size: clamp(38px, 10vw, 62px);
+
+    line-height: 1.08;
+
+    font-weight: 700;
+
+    margin-bottom: 38px;
+
+    letter-spacing: -1.5px;
+}
+
+h2 {
+    font-size: clamp(34px, 9vw, 52px);
+
+    line-height: 1.12;
+
+    font-weight: 600;
+
+    margin-bottom: 38px;
+}
+
+
+/* MESSAGE */
+
+.message {
+    max-width: 380px;
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    color: rgba(255,255,255,.86);
+
+    margin-bottom: 42px;
+}
+
+
+/* BUTTON */
+
+.btn {
+    border: none;
+    outline: none;
+
+    min-width: 230px;
+
+    padding: 17px 30px;
+
+    border-radius: 50px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            100deg,
+            #f52a9c,
+            #8c45f5
+        );
+
+    box-shadow:
+        0 12px 35px rgba(210,50,190,.28);
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.btn:active {
+    transform: scale(.95);
+}
+
+.btn:hover {
+    box-shadow:
+        0 15px 40px rgba(210,50,190,.4);
+}
+
+
+/* DARE TEXT */
+
+.quote {
+    max-width: 370px;
+
+    padding: 0 10px;
+
+    font-size: 19px;
+
+    line-height: 1.65;
+
+    color: rgba(255,255,255,.9);
+
+    margin-bottom: 38px;
+}
+
+.quote strong {
+    color: white;
+}
+
+
+/* =========================
+   PREMIUM FINAL SCREEN
+========================= */
+
+.final-screen {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* GLOW */
+
+.final-screen::before {
+    content: "";
+
+    position: absolute;
+
+    width: 340px;
+    height: 340px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(255,55,170,.28),
+        rgba(130,50,255,.10),
+        transparent 70%
+    );
+
+    filter: blur(15px);
+
+    animation: finalGlow 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes finalGlow {
+
+    0%,100% {
+        transform: scale(.9);
+        opacity: .65;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+
+/* GLASS CARD */
+
+.final-card {
+    position: relative;
+    z-index: 2;
+
+    width: min(390px, 92vw);
+
+    padding: 42px 25px 38px;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.035)
+        );
+
+    border: 1px solid rgba(255,255,255,.14);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.42),
+        inset 0 1px 0 rgba(255,255,255,.10);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    animation: cardReveal .9s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes cardReveal {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px)
+            scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* HEART */
+
+.final-heart {
+    position: relative;
+
+    font-size: 78px;
+
+    line-height: 1;
+
+    margin-bottom: 25px;
+
+    animation:
+        heartbeat 1.5s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 0 18px rgba(255,60,120,.65));
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.14);
+    }
+}
+
+
+/* NAME */
+
+.final-name {
+    font-size: 18px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,.58);
+
+    margin-bottom: 12px;
+}
+
+
+/* LOVE TEXT */
+
+.love-text {
+    font-size: clamp(25px, 7vw, 32px);
+
+    font-weight: 600;
+
+    color: #ff79c8;
+
+    margin-bottom: 14px;
+
+    text-shadow:
+        0 0 12px rgba(255,80,180,.35),
+        0 0 30px rgba(255,80,180,.20);
+
+    animation: loveGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes loveGlow {
+
+    0%,100% {
+        text-shadow:
+            0 0 12px rgba(255,80,180,.35);
+    }
+
+    50% {
+        text-shadow:
+            0 0 20px rgba(255,80,180,.75),
+            0 0 40px rgba(255,80,180,.30);
+    }
+}
+
+
+/* TITLE */
+
+.final-title {
+    font-size: clamp(40px, 11vw, 60px);
+
+    line-height: 1.05;
+
+    font-weight: 700;
+
+    letter-spacing: -1.8px;
+
+    margin-bottom: 13px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #ffffff,
+            #ffd9f1,
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+/* MESSAGE */
+
+.final-message {
+    font-size: 16px;
+
+    color: rgba(255,255,255,.58);
+
+    letter-spacing: .5px;
+}
+
+
+/* FLOATING HEARTS */
+
+.heart-particle {
+    position: absolute;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation: riseHeart linear infinite;
+}
+
+@keyframes riseHeart {
+
+    0% {
+        transform:
+            translateY(30px)
+            scale(.6)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .7;
+    }
+
+    80% {
+        opacity: .35;
+    }
+
+    100% {
+        transform:
+            translateY(-105vh)
+            scale(1.1)
+            rotate(25deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* MOBILE */
+
+@media (max-height: 700px) {
+
+    .emoji {
+        font-size: 65px;
+        margin-bottom: 28px;
+    }
+
+    h1,
+    h2 {
+        margin-bottom: 28px;
+    }
+
+    .message {
+        margin-bottom: 30px;
+    }
+
+    .screen {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .final-card {
+        padding-top: 30px;
+        padding-bottom: 28px;
+    }
+
+    .final-heart {
+        font-size: 65px;
+        margin-bottom: 18px;
+    }
+
+    .final-title {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .small-text {
+        font-size: 17px;
+    }
+
+    .message,
+    .quote {
+        font-size: 17px;
+    }
+
+    .btn {
+        min-width: 210px;
+        font-size: 15px;
+    }
+
+    .love-text {
+        font-size: 22px;
+    }
+
+    .final-card {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+}
+
+</style></head><body><div class="app"><!-- SCREEN 1 -->
+
+<section class="screen active" id="screen1">
+
+    <div class="emoji">
+        🙂
+    </div>
+
+    <div class="small-text">
+        I got a little dare...
+    </div>
+
+    <h1>
+        So I thought,<br>
+        why not?
+    </h1>
+
+    <button class="btn" onclick="nextScreen(2)">
+        START →
+    </button>
+
+</section>
+
+
+
+<!-- SCREEN 2 -->
+
+<section class="screen" id="screen2">
+
+    <div class="emoji">
+        😎
+    </div>
+
+    <h2>
+        Here's the dare
+    </h2>
+
+    <div class="quote">
+
+        “Mention your favourite person,<br>
+        write <strong>I LOVE YOU</strong>,<br>
+        and send the screenshot.”
+
+    </div>
+
+    <button class="btn" onclick="nextScreen(3)">
+        OKAY... →
+    </button>
+
+</section>
+
+
+
+<!-- SCREEN 3 -->
+
+<section class="screen" id="screen3">
+
+    <div class="emoji">
+        🤫
+    </div>
+
+    <div class="small-text">
+        Okay...
+    </div>
+
+    <h2>
+        I know who<br>
+        I could mention.
+    </h2>
+
+    <button class="btn" onclick="nextScreen(4)">
+        NEXT →
+    </button>
+
+</section>
+
+
+
+<!-- SCREEN 4 -->
+
+<section class="screen" id="screen4">
+
+    <div class="emoji">
+        😏
+    </div>
+
+    <div class="small-text">
+        I could mention her...
+    </div>
+
+    <h2>
+        But I'll keep<br>
+        that a little secret.
+    </h2>
+
+    <button class="btn" onclick="nextScreen(5)">
+        WHO? 👀
+    </button>
+
+</section>
+
+
+
+<!-- PREMIUM FINAL SCREEN -->
+
+<section class="screen final-screen" id="screen5">
+
+    <!-- Floating hearts -->
+
+    <span class="heart-particle" style="left:8%; bottom:-20px; animation-duration:8s; animation-delay:0s;">♡</span>
+    <span class="heart-particle" style="left:22%; bottom:-30px; animation-duration:10s; animation-delay:2s;">♥</span>
+    <span class="heart-particle" style="left:76%; bottom:-20px; animation-duration:9s; animation-delay:1s;">♡</span>
+    <span class="heart-particle" style="left:90%; bottom:-30px; animation-duration:11s; animation-delay:3s;">♥</span>
+    <span class="heart-particle" style="left:48%; bottom:-20px; animation-duration:12s; animation-delay:4s;">♡</span>
+
+
+    <div class="final-card">
+
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <div class="final-name">
+            @YOU
+        </div>
+
+        <div class="love-text">
+            I LOVE YOU ❤️
+        </div>
+
+        <div class="final-title">
+            Yep. You.
+        </div>
+
+        <div class="final-message">
+            Dare completed.
+        </div>
+
+    </div>
+
+</section>
+
+</div><script>
+
+function nextScreen(number) {
+
+    const screens =
+        document.querySelectorAll(".screen");
+
+    screens.forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    const next =
+        document.getElementById("screen" + number);
+
+    if (next) {
+        next.classList.add("active");
+    }
+}
+
+</script></body>
+</html>
